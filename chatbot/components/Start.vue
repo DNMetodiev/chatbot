@@ -4,8 +4,10 @@
           <h1 class="text-center font-bold text-2xl">
             Sarah's Customer Support
           </h1>
-          <form @submit.prevent="handleSubmit" class="flex flex-col gap-2 w-full">
-            <input
+          <form @submit.prevent="handleSubmit" >
+            
+            <fieldset :disabled="isSubmitted" class="flex flex-col gap-2 w-full">
+              <input
               v-model.trim="customerName"
               type="text"
               placeholder="Your name"
@@ -27,6 +29,8 @@
             >
               Continue Previous Chat
             </button>
+            </fieldset>
+            
           </form>
         </section>
 </template>
@@ -35,7 +39,24 @@
   const isChatting = useIsChatting();
   const {customerName, hasNameError} = useCustomer();
   
-  function handleSubmit() {
+  const thread = useCookie("thread-id");
+  const run = useCookie("run-id");
+
+  const isSubmitted = ref(false);
+
+  async function handleSubmit() {
+    isSubmitted.value = true;
+
+    const response = await $fetch("/api/thread", {
+      query: {
+        customer: customerName.value,
+      }, 
+    })
+
+    thread.value = response.thread;
+
+    run.value = response.run;
+
     isChatting.value = true;
 }
 </script>
