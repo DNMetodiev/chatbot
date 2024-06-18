@@ -4,8 +4,9 @@
           <h1 class="text-center font-bold text-2xl">
             Sarah's Customer Support
           </h1>
-          <form @submit.prevent="handleSubmit" >
-            
+         
+
+          <form @submit.prevent="handleSubmit" >   
             <fieldset :disabled="isSubmitted" class="flex flex-col gap-2 w-full">
               <input
               v-model.trim="customerName"
@@ -30,8 +31,9 @@
               Continue Previous Chat
             </button>
             </fieldset>
-            
           </form>
+
+
         </section>
 </template>
 
@@ -51,7 +53,7 @@
       query: {
         customer: customerName.value,
       }, 
-    })
+    });
 
     thread.value = response.thread;
 

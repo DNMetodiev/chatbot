@@ -56,18 +56,19 @@ import dompurify from "Dompurify";
       async onResponse({response}){
         const content = response._data.data[0].content[0];
 
-        if(content?.type == "text"){
-        return
-          }
-const parsedMessage = await marked.parse(
-    dompurify.sanitize(content.text.value)
-  );
+        if(content.type == "text"){
+          return;
+        }
+        
+        const parsedMessage = await marked.parse(
+          dompurify.sanitize(content.text.value)
+        );
 
-  messages.value.push({
-      name: "Sarah",
-      message: parsedMessage,
-      isSarah: true,
-      timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        messages.value.push({
+          name: "Sarah",
+          message: parsedMessage,
+          isSarah: true,
+          timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     })
 },
       })

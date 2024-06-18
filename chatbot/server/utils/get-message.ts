@@ -9,5 +9,5 @@ export const getLatestMessages = async (threadID: string, runID: string) => {
     run = await client.beta.threads.runs.retrieve(threadID, runID);
   }
 
-  await client.beta.threads.messages.list(threadID)
+  return await client.beta.threads.messages.list(threadID);
 }

@@ -7,11 +7,11 @@ export default defineEventHandler(async (event) => {
 
   const run = await client.beta.threads.runs.create(thread.id, {
     assistant_id: assistant,
-    additional_instructions: `The customer's name is ${queryParams.customerName}`,
+    additional_instructions: `The customer's name is ${queryParams.customer}`,
   })
 
   return {
     thread: thread.id,
     run: run.id,
   }
-})
+}) 

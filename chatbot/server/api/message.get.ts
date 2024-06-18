@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   const runID = getCookie(event, "run-id");
 
   if (!threadID || !runID) {
-    return
+    return;
   }
 
   return await getLatestMessages(threadID, runID);

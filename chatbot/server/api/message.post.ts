@@ -3,9 +3,10 @@ import { getLatestMessages } from "../utils/get-message"
 
 export default defineEventHandler(async (event) => {
   const threadID = getCookie(event, "thread-id");
+  // const runID = getCookie(event, "run-id");
 
   if (!threadID) {
-    return
+    return;
   }
 
   const queryParams = getQuery(event);
@@ -21,5 +22,5 @@ export default defineEventHandler(async (event) => {
     additional_instructions: `The customer's name is ${queryParams.customerName}`,
   });
 
-  return await getLatestMessages(threadID, runID);
+  return await getLatestMessages(threadID, run.id);
 })
