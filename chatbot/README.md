@@ -1,75 +1,52 @@
-# Nuxt 3 Minimal Starter
+# Sarah Chatbot
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a Vue.js application for a customer support chatbot named Sarah. It utilizes the OpenAI API to power dynamic, intelligent chatbot responses.
 
-## Setup
+## Features
 
-Make sure to install the dependencies:
+- **Text Interaction**: Users interact with the chatbot through text messages.
+- **AI-Powered Responses**: Utilizes OpenAI API for generating chatbot responses.
+- **Session Continuation**: Users can start a new chat or potentially continue a previous one (feature not implemented yet).
 
-```bash
-# npm
-npm install
+## Folder Structure
 
-# pnpm
-pnpm install
+- **/components**: Contains reusable Vue components for the UI.
+  - `Chat.vue`: The main chat window component.
+  - `MessageForm.vue`: Allows user to input messages.
+  - `Start.vue`: The initial screen for starting or continuing chats.
+- **/composables**: Composable functions for state management.
+  - `customer.ts`: Manages customer name state and initials.
+  - `state.ts`: Manages chat and message state.
+- **/server**: Server-side logic using Node.js and Express.
+  - `API`: API endpoints for application interaction.
+  - `message.get.ts`: Retrieves latest messages from OpenAI.
+  - `message.post.ts`: Sends user messages and retrieves responses from OpenAI.
+  - `thread.ts`: Creates new conversation threads with OpenAI.
+- **/utils**: Utility functions for OpenAI API interaction.
+  - `get-message.ts`: Retrieves messages for a specific thread and run.
+  - `openai.ts`: Configures OpenAI client and assistant ID.
+- `nuxt.config.ts`: Nuxt.js configuration file.
 
-# yarn
-yarn install
+## Prerequisites
 
-# bun
-bun install
-```
+- Node.js and npm (or yarn) must be installed.
+- An OpenAI API key and assistant ID. You must create these on the OpenAI website and add them to the `openai.ts` file.
 
-## Development Server
+## Setting up OpenAI API and Assistant ID
 
-Start the development server on `http://localhost:3000`:
+1. Visit the OpenAI website and sign up or log in.
+2. Navigate to the API section and create a new API key.
+3. Follow the instructions to also create an Assistant ID.
+4. Replace the placeholder values in the `openai.ts` file with your new API key and Assistant ID.
 
-```bash
-# npm
-npm run dev
+## Installation
 
-# pnpm
-pnpm run dev
+1. Clone this repository.
+2. Run `npm install` or `yarn install` to install dependencies.
 
-# yarn
-yarn dev
+## Running the Application
 
-# bun
-bun run dev
-```
+1. Execute `npm run dev` or `yarn dev` to start the development server.
+2. Access the application in your browser at `http://localhost:3000`.
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Enjoy interacting with Sarah, your friendly customer support chatbot!
